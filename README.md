@@ -30,3 +30,6 @@ timebox <duration-minutes>
 
 To stop the timer, whether in progress or completed, type `ctrl+c` in the
 terminal.
+
+## LICENSE
+This code base uses an adapted X11 license, which is like the MIT license.
