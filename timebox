@@ -1,0 +1,18 @@
+#!/bin/bash
+
+function date_fmt {
+    date "+%H:%M:%S"
+}
+
+start_date=`date_fmt`
+echo "Started: $start_date"
+seconds=$(($1 * 60))
+sleep $seconds
+echo "Complete: `date_fmt`"
+
+# Notify through UI.
+while true; do
+    osascript -e "display notification \"Slept $1 minutes starting at $start_date\" with title \"Timebox complete\""
+    sleep 15
+done
+echo "Stopped: `date_fmt`"
