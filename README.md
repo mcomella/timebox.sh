@@ -1,6 +1,6 @@
 # timebox.sh
-This is a macOS command line timer that will continuously send a Notification
-Center notifications when the specified duration passes until you clear it.
+This is a macOS and Ubuntu command line timer that will continuously send
+system notifications when the specified duration passes until you clear it.
 
 *This is a personal tool that is lacking polish.*
 
