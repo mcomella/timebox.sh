@@ -11,8 +11,20 @@ sleep $seconds
 echo "Complete: `date_fmt`"
 
 # Notify through UI.
-while true; do
-    osascript -e "display notification \"Slept $1 minutes starting at $start_date\" with title \"Timebox complete\""
-    sleep 15
-done
-echo "Stopped: `date_fmt`"
+title="Timebox complete"
+body_text="Slept $1 minutes starting at $start_date"
+
+if [ $OSTYPE == 'linux-gnu' ]; then
+    notify-send -u critical "$title" "$body_text"
+
+elif [ $OSTYPE == 'macOS' ]; then
+    # Notification isn't persistent so we have to loop.
+    while true; do
+        osascript -e "display notification \"$body_text\" with title \"$title\""
+        sleep 15
+    done
+    echo "Stopped: `date_fmt`"
+
+else
+    echo "Unknown OS: unable to send notification." 1>&2
+fi
