@@ -11,8 +11,13 @@ sleep $seconds
 echo "Complete: `date_fmt`"
 
 # Notify through UI.
-title="Timebox complete"
+if [ $2 ]; then
+    title=$2
+else
+    title="Timebox complete"
+fi
 body_text="Slept $1 minutes starting at $start_date"
+
 
 if [ $OSTYPE == 'linux-gnu' ]; then
     notify-send -u critical "$title" "$body_text"
